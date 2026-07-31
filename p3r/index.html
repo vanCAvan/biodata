@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P3R Menu - Cavandi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="sea-background">
+        <video id="p3rVideo" autoplay muted playsinline class="bg-video">
+            <source src="Makoto animated wallpaper.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <div class="game-container">
+        <div class="left-art-side">
+            <div class="silhouette-placeholder"></div>
+            <h1 class="giant-bg-text">CAVANDISH</h1>
+        </div>
+
+        <div class="menu-side" id="mainMenuScreen">
+            <nav class="p3r-vertical-menu">
+                <div class="menu-item active" data-target="panel-biodata">
+                    <div class="ribbon-bg"></div>
+                    <span class="menu-text">BIODATA</span>
+                </div>
+                <div class="menu-item" data-target="panel-stats">
+                    <div class="ribbon-bg"></div>
+                    <span class="menu-text">STATS</span>
+                </div>
+                <div class="menu-item" data-target="panel-skills">
+                    <div class="ribbon-bg"></div>
+                    <span class="menu-text">SKILLS</span>
+                </div>
+            </nav>
+        </div>
+
+        <div class="content-display-side">
+
+            <div class="content-panel" id="panel-biodata">
+                <h2 class="panel-header">CHARACTER INFO</h2>
+                <div class="panel-body">
+                    <p><strong>NAME:</strong> CAVANDI</p>
+                    <p><strong>ARCANA:</strong> THE FOOL</p>
+                    <p><strong>CLASS:</strong> GRADE 12 STUDENT</p>
+                    <p><strong>SPECIALTY:</strong> SOLO </p>
+                </div>
+                <button class="back-button">◀ CLOSE MENU</button>
+            </div>
+
+            <div class="content-panel" id="panel-stats">
+                <h2 class="panel-header">SOCIAL STATS</h2>
+                <div class="panel-body">
+                    <div class="stat-bar-group">
+                        <span class="stat-label">ACADEMICS</span>
+                        <div class="bar-bg">
+                            <div class="bar-fill cyan" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="stat-bar-group">
+                        <span class="stat-label">CHARM</span>
+                        <div class="bar-bg">
+                            <div class="bar-fill pink" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    <div class="stat-bar-group">
+                        <span class="stat-label">COURAGE</span>
+                        <div class="bar-bg">
+                            <div class="bar-fill white" style="width: 60%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <button class="back-button">◀ CLOSE MENU</button>
+            </div>
+
+            <div class="content-panel" id="panel-skills">
+                <h2 class="panel-header">SKILL SET</h2>
+                <div class="panel-body">
+                    <ul class="skill-list">
+                        <li>AGI (HTML5 Mastery)</li>
+                        <li>BUFULA (CSS3 Styling)</li>
+                        <li>ZIO (JavaScript Logic)</li>
+                        <li>MEDIA (UI/UX Design)</li>
+                    </ul>
+                </div>
+                <button class="back-button">◀ CLOSE MENU</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Music Player Widget Piringan Hitam -->
+    <div class="audio-player-widget">
+        <!-- Tag Audio (Ganti 'music.mp3' dengan nama file lagumu) -->
+        <audio id="bgMusic" src="Full Moon Full Life 4.mp3" loop></audio>
+        
+        <!-- BANNER JUDUL LAGU (BARU) -->
+        <div class="song-title-banner" id="songBanner">
+            <span class="now-playing-label">NOW PLAYING</span>
+            <div class="title-text-wrapper">
+                <span class="song-title">Full Moon Full Life</span>
+                <span class="song-artist">Persona 3 Reload OST</span>
+            </div>
+        </div>
+
+        <div class="vinyl-container" id="vinylContainer">
+            <!-- Jarum Pemutar (Tonearm) -->
+            <div class="tonearm" id="tonearm"></div>
+
+            <!-- Piringan Hitam -->
+            <div class="vinyl-disc" id="vinylDisc">
+                <div class="vinyl-label">
+                    <div class="center-hole"></div>
+                </div>
+            </div>
+
+            <!-- Tombol Play/Pause melayang di atas piringan -->
+            <button class="audio-control-btn" id="audioToggleBtn" title="Play/Pause Music">
+                <span class="icon" id="playIcon">▶</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

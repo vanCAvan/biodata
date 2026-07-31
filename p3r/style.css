@@ -1,0 +1,490 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:ital,wght@1,900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #000b1e;
+    color: #fff;
+    font-family: 'Archivo Black', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Latar Belakang Video */
+.sea-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -3;
+}
+
+.bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Memastikan video memenuhi seluruh layar */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 80, 157, 0.1) 0%, rgba(0, 11, 30, 0.6) 100%);
+    z-index: -2;
+}
+
+/* Lapisan warna biru gelap transparan agar teks menu tetap kontras & jelas dibaca */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 80, 157, 0.3) 0%, rgba(0, 11, 30, 0.85) 100%);
+    z-index: -3;
+}
+
+/* Container Utama */
+.game-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* Bagian Kiri (Siluet Gaya Karakter P3R) */
+.left-art-side {
+    flex: 1.2;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 50px;
+    padding-left: 40px;
+}
+
+.giant-bg-text {
+    font-size: 6.5rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.08);
+    transform: rotate(-12deg) skewX(-10deg);
+    position: absolute;
+    bottom: 10%;
+    left: -5%;
+    user-select: none;
+    line-height: 0.8;
+}
+
+/* Desain Menu Vertikal Miring Tengah-Kanan */
+.menu-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 10;
+    transition: transform 0.5s cubic-bezier(0.1, 0.8, 0.2, 1), opacity 0.4s;
+}
+
+/* Efek geser menu utama saat tidak aktif */
+.menu-side.shifted {
+    transform: translateX(-150px);
+    opacity: 0.5;
+}
+
+.p3r-vertical-menu {
+    display: flex;
+    flex-direction: column;
+    gap: -10px;
+    /* Membuat tulisan saling menempel rapat vertikal */
+    transform: rotate(-12deg);
+    /* Kemiringan sudut seluruh menu */
+}
+
+.menu-item {
+    position: relative;
+    cursor: pointer;
+    padding: 0px 20px;
+    transition: transform 0.2s ease;
+}
+
+/* Efek Berkelok (Staggered): Mengatur posisi kanan-kiri tiap menu */
+.menu-item:nth-child(1) {
+    transform: translateX(40px);
+}
+
+/* Menu ke-1 agak ke kanan */
+.menu-item:nth-child(2) {
+    transform: translateX(10px);
+}
+
+/* Menu ke-2 di tengah */
+.menu-item:nth-child(3) {
+    transform: translateX(-15px);
+}
+
+/* Menu ke-3 agak ke kiri */
+
+.menu-text {
+    font-family: 'Impact', 'Archivo Black', sans-serif;
+    /* Menggunakan Impact agar font tinggi & tebal */
+    font-size: 3.8rem;
+    /* Ukuran teks diperbesar */
+    font-weight: 900;
+    font-style: normal;
+    text-transform: uppercase;
+    transform: skewX(-20deg);
+    /* Kemiringan tajam per huruf */
+    color: #00d4ff;
+    /* Biru cyan menu pasif */
+    text-shadow: 3px 3px 0px #001133;
+    letter-spacing: -3px;
+    /* Merapatkan jarak antar huruf */
+    position: relative;
+    z-index: 5;
+    transition: all 0.2s ease;
+    display: inline-block;
+}
+
+.ribbon-bg {
+    position: absolute;
+    top: 5%;
+    left: -10px;
+    width: 0;
+    height: 90%;
+    background: #ffffff;
+    transform: skewX(-25deg);
+    z-index: 1;
+    transition: width 0.25s cubic-bezier(0.1, 0.9, 0.2, 1);
+}
+
+/* Efek ketika menu aktif/diklik */
+.menu-item.active .menu-text {
+    color: #000000;
+    /* Teks jadi hitam */
+    text-shadow: 4px 4px 0px #ff0055, -2px -2px 0px #ffffff;
+    /* Bayangan pink & outline putih */
+    transform: skewX(-20deg) scale(1.1) translateX(20px);
+}
+
+/* Efek pita putih di belakang menu aktif */
+.menu-item:hover .ribbon-bg,
+.menu-item.active .ribbon-bg {
+    width: 120%;
+    background: #ffffff;
+    box-shadow: -8px 8px 0px #ff0055;
+    /* Garis tepi pink tajam */
+}
+
+/* Sisi Tampilan Panel Informasi Konten */
+.content-display-side {
+    flex: 1.5;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 50px;
+}
+
+.content-panel {
+    position: absolute;
+    width: 90%;
+    background: rgba(0, 12, 36, 0.9);
+    border: 3px solid #00d4ff;
+    border-right: 8px solid #00d4ff;
+    padding: 40px;
+    transform: skewX(-8deg) scale(0.8);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s cubic-bezier(0.1, 0.9, 0.2, 1);
+    box-shadow: 20px 20px 0px rgba(0, 0, 0, 0.4);
+}
+
+/* Status Panel Aktif */
+.content-panel.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: skewX(-8deg) scale(1);
+}
+
+.panel-header {
+    font-size: 2rem;
+    font-style: italic;
+    color: #ff0055;
+    margin-bottom: 25px;
+    border-bottom: 2px dashed #00d4ff;
+    padding-bottom: 10px;
+}
+
+.panel-body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+/* Desain Bar Status di Menu Stats */
+.stat-bar-group {
+    margin-bottom: 15px;
+}
+
+.stat-label {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1rem;
+    color: #00d4ff;
+}
+
+.bar-bg {
+    background: #001a44;
+    height: 15px;
+    border: 1px solid #00d4ff;
+    margin-top: 5px;
+}
+
+.bar-fill {
+    height: 100%;
+}
+
+.bar-fill.cyan {
+    background: #00f2fe;
+}
+
+.bar-fill.pink {
+    background: #ff0055;
+}
+
+.bar-fill.white {
+    background: #ffffff;
+}
+
+/* Daftar List Skill */
+.skill-list {
+    list-style: none;
+}
+
+.skill-list li {
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 8px;
+    border-left: 4px solid #ff0055;
+}
+
+/* Tombol Kembali Gahar */
+.back-button {
+    margin-top: 30px;
+    background: #ffffff;
+    color: #000b1e;
+    border: none;
+    padding: 10px 20px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transform: skewX(8deg);
+    transition: background 0.2s;
+}
+
+.back-button:hover {
+    background: #ff0055;
+    color: #fff;
+}
+
+/* ==========================================
+   AUDIO PLAYER PIRINGAN HITAM (POJOK KANAN BAWAH)
+   ========================================== */
+
+.audio-player-widget {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vinyl-container {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Jarum Pemutar Musik (Tonearm) */
+.tonearm {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    width: 6px;
+    height: 40px;
+    background: linear-gradient(180deg, #d1d5db, #6b7280);
+    border-radius: 3px;
+    transform-origin: top right;
+    transform: rotate(-30deg);
+    /* Posisi mati/di luar piringan */
+    transition: transform 0.5s ease;
+    z-index: 12;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.tonearm::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -3px;
+    width: 12px;
+    height: 10px;
+    background: #ff0055;
+    /* Aksen warna pink P3R */
+    border-radius: 2px;
+}
+
+/* Piringan Hitam */
+.vinyl-disc {
+    width: 85px;
+    height: 85px;
+    background: radial-gradient(circle, #222 20%, #111 21%, #000 60%, #111 100%);
+    border-radius: 50%;
+    border: 3px solid #333;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7), inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+}
+
+/* Lingkaran Tengah Piringan Hitam */
+.vinyl-label {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #00d4ff, #ff0055);
+    /* Warna khas P3R */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.center-hole {
+    width: 8px;
+    height: 8px;
+    background-color: #000b1e;
+    border-radius: 50%;
+}
+
+/* Animasi Berputar Piringan Hitam */
+.vinyl-disc.playing {
+    animation: spinVinyl 3s linear infinite;
+}
+
+@keyframes spinVinyl {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Posisi Jarum saat Musik Diputar */
+.tonearm.playing {
+    transform: rotate(12deg);
+    /* Jarum menempel ke piringan */
+}
+
+/* Tombol Kontrol Play/Pause Overlay */
+.audio-control-btn {
+    position: absolute;
+    z-index: 15;
+    width: 36px;
+    height: 36px;
+    background: rgba(0, 11, 30, 0.85);
+    border: 2px solid #00d4ff;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+.audio-control-btn:hover {
+    background: #ff0055;
+    border-color: #ffffff;
+    transform: scale(1.1);
+}
+
+.audio-control-btn .icon {
+    display: inline-block;
+    margin-left: 2px;
+    /* Penyesuaian presisi posisi simbol play */
+}
+
+/* ==========================================
+   BANNER JUDUL LAGU OTOMATIS (BARU)
+   ========================================== */
+
+.song-title-banner {
+    background: rgba(0, 11, 30, 0.9);
+    border: 2px solid #00d4ff;
+    border-right: none;
+    padding: 8px 25px 8px 15px;
+    margin-right: -20px;
+    transform: skewX(-12deg) translateX(30px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: -5px 5px 0px rgba(255, 0, 85, 0.6);
+}
+
+.song-title-banner.show {
+    opacity: 1;
+    transform: skewX(-12deg) translateX(0);
+    pointer-events: auto;
+}
+
+.now-playing-label {
+    font-size: 0.65rem;
+    color: #ff0055;
+    font-weight: 900;
+    letter-spacing: 2px;
+    transform: skewX(12deg);
+}
+
+.title-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    transform: skewX(12deg);
+}
+
+.song-title {
+    font-size: 0.95rem;
+    font-weight: 900;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.song-artist {
+    font-size: 0.75rem;
+    color: #00d4ff;
+    white-space: nowrap;
+}
